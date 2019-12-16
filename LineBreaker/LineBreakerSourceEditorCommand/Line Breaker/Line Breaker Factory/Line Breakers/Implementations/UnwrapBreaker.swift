@@ -1,5 +1,5 @@
 //
-//  IfLetBreaker.swift
+//  UnwrapBreaker.swift
 //  LineBreakerSourceEditorCommand
 //
 //  Created by Matthew Pierce on 16/12/2019.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct IfLetBreaker: LineBreakerProtocol {
+struct UnwrapBreaker: LineBreakerProtocol {
     
     private struct Constants {
         
         static let comma: Character = ","
         static let openBracket: Character = "("
-        static let cloedBracket: Character = ")"
+        static let closedBracket: Character = ")"
         static let tabSpaceCount = 4
         static let newLine = "\n"
         
@@ -25,7 +25,7 @@ struct IfLetBreaker: LineBreakerProtocol {
     func breakLine(_ line: String) -> String? {
         let commaIndexes = line.enumerated()
             .compactMap { $0.element == Constants.comma ? $0.offset : nil }
-            .filter { line[0..<$0].matchCounts(of: Constants.openBracket, with: Constants.cloedBracket) }
+            .filter { line[0..<$0].matchCounts(of: Constants.openBracket, with: Constants.closedBracket) }
         let splitString = line.split(at: commaIndexes)
         let spaceString = String(repeating: " ", count: Constants.tabSpaceCount + line.getLeadingSpaceCount())
         return splitString[0] +

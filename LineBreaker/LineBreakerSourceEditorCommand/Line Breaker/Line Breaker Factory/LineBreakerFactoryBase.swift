@@ -26,9 +26,9 @@ class LineBreakerFactoryBase: LineBreakerFactory {
         if codeString.range(of: Constants.funcRegEx, options: .regularExpression) != nil {
             return FunctionDefinitionBreaker()
         } else if codeString.range(of: Constants.ifLetRegEx, options: .regularExpression) != nil {
-            return IfLetBreaker()
+            return UnwrapBreaker()
         } else if codeString.range(of: Constants.guardLetRegEx, options: .regularExpression) != nil {
-            return GuardLetBreaker()
+            return UnwrapBreaker()
         } else if codeString.range(of: Constants.arrayRegEx, options: .regularExpression) != nil {
             return ArrayBreaker()
         } else if codeString.range(of: Constants.dictRegEx, options: .regularExpression) != nil {

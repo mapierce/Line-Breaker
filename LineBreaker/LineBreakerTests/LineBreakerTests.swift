@@ -65,13 +65,13 @@ final class LineBreakerTests: XCTestCase {
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.chainedFunctionOne) is DotSeparatorBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.chainedFunctionTwo) is DotSeparatorBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.chainedFunctionThree) is DotSeparatorBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifLetOne) is IfLetBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifLetTwo) is IfLetBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifLetThree) is IfLetBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifLetThree) is IfLetBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardLetOne) is GuardLetBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardLetTwo) is GuardLetBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardLetThree) is GuardLetBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifLetOne) is UnwrapBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifLetTwo) is UnwrapBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifLetThree) is UnwrapBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifLetThree) is UnwrapBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardLetOne) is UnwrapBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardLetTwo) is UnwrapBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardLetThree) is UnwrapBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.arrayOne) is ArrayBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.arrayTwo) is ArrayBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.dictOne) is DictionaryBreaker)
@@ -168,13 +168,38 @@ final class LineBreakerTests: XCTestCase {
                 let count = json["count"] as? Int,
                 count == 0 {
             """
-        let breaker = IfLetBreaker()
+        let brokenFourExpected = """
+            guard let searchResults = searchResults,
+                let relativeIndexAndAdUnit = relativeIndexAndAdUnit(),
+                paginator.currentPage < 3,
+                Int(paginator.loadedResults - paginator.firstResultInCurrentPage) > relativeIndexAndAdUnit.index  else {
+            """
+        let brokenFiveExpected = """
+            guard let userInfo = notification.userInfo,
+                let id = userInfo["id"] as? Int,
+                let type = userInfo["type"] as? String,
+                let adType = DaftAdType(string: type),
+                let daysLeft = userInfo["days_left"] as? Int,
+                let index = indexOfAd(withId: id, andAdType: adType.type) else {
+            """
+        let brokenSixExpected = """
+            guard let indexPath = indexPath,
+                let collectionView = getCollectionViewController([fromViewController, toViewController]),
+                let openingFrame = getConvertedRectFoIndexPath(indexPath, collectionView: collectionView)  else {
+            """
+        let breaker = UnwrapBreaker()
         let brokenLineOne = breaker.breakLine(Constants.ifLetOne)!
         let brokenLineTwo = breaker.breakLine(Constants.ifLetTwo)!
         let brokenLineThree = breaker.breakLine(Constants.ifLetThree)!
+        let brokenLineFour = breaker.breakLine(Constants.guardLetOne)!
+        let brokenLineFive = breaker.breakLine(Constants.guardLetTwo)!
+        let brokenLineSix = breaker.breakLine(Constants.guardLetThree)!
         XCTAssertEqual(brokenLineOne, brokenOneExpected)
         XCTAssertEqual(brokenLineTwo, brokenTwoExpected)
         XCTAssertEqual(brokenLineThree, brokenThreeExpected)
+        XCTAssertEqual(brokenLineFour, brokenFourExpected)
+        XCTAssertEqual(brokenLineFive, brokenFiveExpected)
+        XCTAssertEqual(brokenLineSix, brokenSixExpected)
     }
 
 }

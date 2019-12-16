@@ -21,8 +21,7 @@
 		34EB147223A7C971001E76B2 /* LineBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147123A7C971001E76B2 /* LineBreaker.swift */; };
 		34EB147523A7C991001E76B2 /* FunctionDefinitionBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147423A7C991001E76B2 /* FunctionDefinitionBreaker.swift */; };
 		34EB147723A7C99D001E76B2 /* DotSeparatorBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147623A7C99D001E76B2 /* DotSeparatorBreaker.swift */; };
-		34EB147923A7C9A8001E76B2 /* IfLetBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147823A7C9A8001E76B2 /* IfLetBreaker.swift */; };
-		34EB147B23A7C9B1001E76B2 /* GuardLetBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147A23A7C9B1001E76B2 /* GuardLetBreaker.swift */; };
+		34EB147923A7C9A8001E76B2 /* UnwrapBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147823A7C9A8001E76B2 /* UnwrapBreaker.swift */; };
 		34EB147D23A7C9BA001E76B2 /* ArrayBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147C23A7C9BA001E76B2 /* ArrayBreaker.swift */; };
 		34EB147F23A7C9C5001E76B2 /* DictionaryBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147E23A7C9C5001E76B2 /* DictionaryBreaker.swift */; };
 		34EB148123A7C9D0001E76B2 /* StandardIfBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB148023A7C9D0001E76B2 /* StandardIfBreaker.swift */; };
@@ -37,8 +36,7 @@
 		34EB149023A7CB47001E76B2 /* LineBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147123A7C971001E76B2 /* LineBreaker.swift */; };
 		34EB149123A7CB49001E76B2 /* FunctionDefinitionBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147423A7C991001E76B2 /* FunctionDefinitionBreaker.swift */; };
 		34EB149223A7CB4B001E76B2 /* DotSeparatorBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147623A7C99D001E76B2 /* DotSeparatorBreaker.swift */; };
-		34EB149323A7CB4D001E76B2 /* IfLetBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147823A7C9A8001E76B2 /* IfLetBreaker.swift */; };
-		34EB149423A7CB4F001E76B2 /* GuardLetBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147A23A7C9B1001E76B2 /* GuardLetBreaker.swift */; };
+		34EB149323A7CB4D001E76B2 /* UnwrapBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147823A7C9A8001E76B2 /* UnwrapBreaker.swift */; };
 		34EB149523A7CB52001E76B2 /* ArrayBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147C23A7C9BA001E76B2 /* ArrayBreaker.swift */; };
 		34EB149623A7CB54001E76B2 /* DictionaryBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB147E23A7C9C5001E76B2 /* DictionaryBreaker.swift */; };
 		34EB149723A7CB56001E76B2 /* StandardIfBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB148023A7C9D0001E76B2 /* StandardIfBreaker.swift */; };
@@ -99,8 +97,7 @@
 		34EB147123A7C971001E76B2 /* LineBreaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineBreaker.swift; sourceTree = "<group>"; };
 		34EB147423A7C991001E76B2 /* FunctionDefinitionBreaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionDefinitionBreaker.swift; sourceTree = "<group>"; };
 		34EB147623A7C99D001E76B2 /* DotSeparatorBreaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotSeparatorBreaker.swift; sourceTree = "<group>"; };
-		34EB147823A7C9A8001E76B2 /* IfLetBreaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfLetBreaker.swift; sourceTree = "<group>"; };
-		34EB147A23A7C9B1001E76B2 /* GuardLetBreaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardLetBreaker.swift; sourceTree = "<group>"; };
+		34EB147823A7C9A8001E76B2 /* UnwrapBreaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwrapBreaker.swift; sourceTree = "<group>"; };
 		34EB147C23A7C9BA001E76B2 /* ArrayBreaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayBreaker.swift; sourceTree = "<group>"; };
 		34EB147E23A7C9C5001E76B2 /* DictionaryBreaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryBreaker.swift; sourceTree = "<group>"; };
 		34EB148023A7C9D0001E76B2 /* StandardIfBreaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardIfBreaker.swift; sourceTree = "<group>"; };
@@ -241,8 +238,7 @@
 			children = (
 				34EB147423A7C991001E76B2 /* FunctionDefinitionBreaker.swift */,
 				34EB147623A7C99D001E76B2 /* DotSeparatorBreaker.swift */,
-				34EB147823A7C9A8001E76B2 /* IfLetBreaker.swift */,
-				34EB147A23A7C9B1001E76B2 /* GuardLetBreaker.swift */,
+				34EB147823A7C9A8001E76B2 /* UnwrapBreaker.swift */,
 				34EB147C23A7C9BA001E76B2 /* ArrayBreaker.swift */,
 				34EB147E23A7C9C5001E76B2 /* DictionaryBreaker.swift */,
 				34EB148023A7C9D0001E76B2 /* StandardIfBreaker.swift */,
@@ -410,8 +406,7 @@
 				34EB149223A7CB4B001E76B2 /* DotSeparatorBreaker.swift in Sources */,
 				34EB149723A7CB56001E76B2 /* StandardIfBreaker.swift in Sources */,
 				34EB148C23A7CB3E001E76B2 /* MultipleLinesSelectedError.swift in Sources */,
-				34EB149423A7CB4F001E76B2 /* GuardLetBreaker.swift in Sources */,
-				34EB149323A7CB4D001E76B2 /* IfLetBreaker.swift in Sources */,
+				34EB149323A7CB4D001E76B2 /* UnwrapBreaker.swift in Sources */,
 				34EB149623A7CB54001E76B2 /* DictionaryBreaker.swift in Sources */,
 				34EB148D23A7CB40001E76B2 /* InvalidLinesToBreakError.swift in Sources */,
 				34EB149023A7CB47001E76B2 /* LineBreaker.swift in Sources */,
@@ -435,12 +430,11 @@
 				34EB147523A7C991001E76B2 /* FunctionDefinitionBreaker.swift in Sources */,
 				34EB148B23A7CA3F001E76B2 /* String+Extensions.swift in Sources */,
 				34EB147723A7C99D001E76B2 /* DotSeparatorBreaker.swift in Sources */,
-				34EB147B23A7C9B1001E76B2 /* GuardLetBreaker.swift in Sources */,
 				34EB146D23A7C955001E76B2 /* LineBreakerFactory.swift in Sources */,
 				34EB148823A7CA0D001E76B2 /* InvalidLinesToBreakError.swift in Sources */,
 				34EB146F23A7C95F001E76B2 /* LineBreakerFactoryBase.swift in Sources */,
 				34EB147D23A7C9BA001E76B2 /* ArrayBreaker.swift in Sources */,
-				34EB147923A7C9A8001E76B2 /* IfLetBreaker.swift in Sources */,
+				34EB147923A7C9A8001E76B2 /* UnwrapBreaker.swift in Sources */,
 				34EB148623A7C9FE001E76B2 /* MultipleLinesSelectedError.swift in Sources */,
 				34EB147223A7C971001E76B2 /* LineBreaker.swift in Sources */,
 				34EB148323A7C9DA001E76B2 /* StandardGuardBreaker.swift in Sources */,
