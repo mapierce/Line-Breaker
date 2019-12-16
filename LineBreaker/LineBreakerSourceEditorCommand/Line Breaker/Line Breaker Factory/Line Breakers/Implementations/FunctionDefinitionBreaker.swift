@@ -29,7 +29,7 @@ struct FunctionDefinitionBreaker: LineBreakerProtocol {
         let openBracket = line.firstIntIndex(of: Constants.openBracket)
         let lines = innerFunction.split(at: commaIndexes)
         innerFunction = lines[0] + Constants.newLine + innerFunction.split(at: commaIndexes)[1..<lines.count]
-            .map { String(repeating: " ", count: openBracket) + $0 }
+            .map { String(repeating: " ", count: openBracket + 1) + $0.trimmingCharacters(in: .whitespaces) }
             .reduce("") { (current, next) in "\(current)\(next)\(Constants.newLine)"}
         innerFunction.removeLast()
         let prefix = line[...line.index(bracketIndexes.open, offsetBy: -1)]
