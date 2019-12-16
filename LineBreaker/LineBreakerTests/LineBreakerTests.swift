@@ -30,7 +30,7 @@ final class LineBreakerTests: XCTestCase {
         static let arrayOne = "let arr: [(Int, Int)] = [(1, 2), (3, 4), (5, 6),(7,8), (9,9),(0,0)]"
         static let arrayTwo = #"let arr2: [String?] = ["", "Hi, there", "", nil, "one"]"#
         static let dictOne = #"let dictOne: [String: (Int, Any)] = ["Hi": (1, 4.0), "There": (0, "hd,fsf"), "now": (2, 2), "d": (1, true)]"#
-        static let dictTwo = "let dictTwo: [Int: Int] = [1: 1, 2: 2, 3: 3: 4: 4]"
+        static let dictTwo = "let dictTwo: [Int: Int] = [1: 1, 2: 2, 3: 3, 4: 4]"
         static let guardOne = "guard self.count <= maximumCharactersAllowed && self.count > 4 || somethingElse == true else {"
         static let guardTwo = #"guard funcCall() == 5 && someVal == "thisVal" || self != nil else {"#
         static let ifOne = #"if (val == 1 && otherVal == 3) || (funcCall() && otherFuncCall()) {"#
