@@ -28,31 +28,16 @@ struct DotSeparatorBreaker: LineBreakerProtocol {
         let dotIndexes = line
             .enumerated()
             .compactMap { $0.element == Constants.dot ? $0.offset : nil }
-            .filter { matchCounts(of: Constants.openBracket, with: Constants.closedBracket, in: line[0..<$0]) &&
-                matchCounts(of: Constants.openCurly, with: Constants.closedCurly, in: line[0..<$0]) }
+            .filter { line[0..<$0].matchCounts(of: Constants.openBracket, with: Constants.closedBracket) &&
+                line[0..<$0].matchCounts(of: Constants.openCurly, with: Constants.closedCurly) }
             .map { $0 - 1 }
         let splitString = line.split(at: dotIndexes)
-        let spaceString = String(repeating: " ", count: Constants.tabSpaceCount + getLeadingSpaceCount(from: line))
+        let spaceString = String(repeating: " ", count: Constants.tabSpaceCount + line.getLeadingSpaceCount())
         return splitString[0] +
             Constants.newLine +
             splitString[1..<splitString.count - 1].map { spaceString + $0 + Constants.newLine }.joined() +
             spaceString +
             splitString[splitString.count - 1]
-    }
-
-    // MARK: - Public methods
-
-    func getLeadingSpaceCount(from line: String) -> Int {
-        var spaceCount = 0
-        for char in line {
-            guard char == " " else { break }
-            spaceCount += 1
-        }
-        return spaceCount
-    }
-
-    func matchCounts(of first: Character, with second: Character, in string: String) -> Bool {
-        return string.filter { $0 == first }.count == string.filter { $0 == second }.count
     }
 
 }

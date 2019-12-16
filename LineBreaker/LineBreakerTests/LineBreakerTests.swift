@@ -150,5 +150,31 @@ final class LineBreakerTests: XCTestCase {
         XCTAssertEqual(brokenLineTwo, brokenTwoExpected)
         XCTAssertEqual(brokenLineThree, brokenThreeExpected)
     }
+    
+    func testIfLetBreaker() {
+        let brokenOneExpected = """
+            if let errorHandler = self.errorHandler,
+                let jsonRaw = try? JSONSerialization.jsonObject(with: data, options: []),
+                let json = jsonRaw as? JSONDictionary,
+                let error = errorHandler.errorFromJSONResponse(json, andRequest: resource.request, andResponse: response) {
+            """
+        let brokenTwoExpected = """
+            if let contractType = adDictionary["contract_type"] as? Int,
+                adType.type == DaftAdTypeCommercial {
+            """
+        let brokenThreeExpected = """
+            if let rawJson = try? JSONSerialization.jsonObject(with: data, options: []),
+                let json = rawJson as? JSONDictionary,
+                let count = json["count"] as? Int,
+                count == 0 {
+            """
+        let breaker = IfLetBreaker()
+        let brokenLineOne = breaker.breakLine(Constants.ifLetOne)!
+        let brokenLineTwo = breaker.breakLine(Constants.ifLetTwo)!
+        let brokenLineThree = breaker.breakLine(Constants.ifLetThree)!
+        XCTAssertEqual(brokenLineOne, brokenOneExpected)
+        XCTAssertEqual(brokenLineTwo, brokenTwoExpected)
+        XCTAssertEqual(brokenLineThree, brokenThreeExpected)
+    }
 
 }

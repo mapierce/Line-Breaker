@@ -34,5 +34,18 @@ extension String {
         let end = index(startIndex, offsetBy: range.startIndex + range.count)
         return String(self[start..<end])
     }
+    
+    func getLeadingSpaceCount() -> Int {
+        var spaceCount = 0
+        for char in self {
+            guard char == " " else { break }
+            spaceCount += 1
+        }
+        return spaceCount
+    }
+    
+    func matchCounts(of first: Character, with second: Character) -> Bool {
+        return self.filter { $0 == first }.count == self.filter { $0 == second }.count
+    }
 
 }
