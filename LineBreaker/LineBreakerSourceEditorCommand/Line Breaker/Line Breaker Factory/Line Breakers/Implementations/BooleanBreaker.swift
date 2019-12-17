@@ -16,6 +16,7 @@ struct BooleanBreaker: LineBreakerProtocol {
         let indexes = (line.indicesOfString(StringConstants.and) + line.indicesOfString(StringConstants.or))
             .filter { line[0..<$0].matchCounts(of: StringConstants.openBracket, with: StringConstants.closedBracket) }.map { $0 + 1 }
         var splitString = line.split(at: indexes)
+        guard splitString.count > 1 else { return nil }
         splitString = [splitString[0]] + splitString[1...].map { $0.trimmingCharacters(in: .whitespaces) }
         let spaceString = String(repeating: " ", count: StringConstants.tabSpaceCount + line.getLeadingSpaceCount())
         return splitString[0] +

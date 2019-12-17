@@ -20,6 +20,7 @@ struct DotSeparatorBreaker: LineBreakerProtocol {
                 line[0..<$0].matchCounts(of: StringConstants.openCurly, with: StringConstants.closedCurly) }
             .map { $0 - 1 }
         let splitString = line.split(at: dotIndexes)
+        guard splitString.count > 1 else { return nil }
         let spaceString = String(repeating: " ", count: StringConstants.tabSpaceCount + line.getLeadingSpaceCount())
         return splitString[0] +
             StringConstants.newLine +

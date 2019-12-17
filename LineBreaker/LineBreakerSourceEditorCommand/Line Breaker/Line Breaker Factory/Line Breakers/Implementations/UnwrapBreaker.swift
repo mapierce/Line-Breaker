@@ -17,6 +17,7 @@ struct UnwrapBreaker: LineBreakerProtocol {
             .compactMap { $0.element == StringConstants.comma ? $0.offset : nil }
             .filter { line[0..<$0].matchCounts(of: StringConstants.openBracket, with: StringConstants.closedBracket) }
         let splitString = line.split(at: commaIndexes)
+        guard splitString.count > 1 else { return nil }
         let spaceString = String(repeating: " ", count: StringConstants.tabSpaceCount + line.getLeadingSpaceCount())
         return splitString[0] +
             StringConstants.newLine +

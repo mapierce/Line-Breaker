@@ -13,11 +13,12 @@ struct FunctionDefinitionBreaker: LineBreakerProtocol {
     // MARK: - LineBreaker methods
 
     func breakLine(_ line: String) -> String? {
-        guard let bracketIndexes = getBracketIndexes(from: line) else { return nil }
+        guard let bracketIndexes = getBracketIndexes(from: line),
+            let openBracket = line.firstIntIndex(of: StringConstants.openBracket) else { return nil }
         var innerFunction = String(line[bracketIndexes.open...bracketIndexes.close])
         let commaIndexes = getCommaIndexes(from: innerFunction)
-        let openBracket = line.firstIntIndex(of: StringConstants.openBracket)
         let lines = innerFunction.split(at: commaIndexes)
+        guard lines.count > 1 else { return nil }
         innerFunction = lines[0] + StringConstants.newLine + innerFunction.split(at: commaIndexes)[1..<lines.count]
             .map { String(repeating: " ", count: openBracket + 1) + $0.trimmingCharacters(in: .whitespaces) }
             .reduce("") { (current, next) in "\(current)\(next)\(StringConstants.newLine)"}
@@ -31,7 +32,8 @@ struct FunctionDefinitionBreaker: LineBreakerProtocol {
 
     func getBracketIndexes(from funcName: String, offset: (start: Int, end: Int) = (1, -1)) -> (open: String.Index, close: String.Index)? {
         guard let openIndex = funcName.firstIndex(of: StringConstants.openBracket),
-            let closeIndex = funcName.lastIndex(of: StringConstants.closedBracket) else { return nil }
+            let closeIndex = funcName.lastIndex(of: StringConstants.closedBracket),
+            funcName.distance(from: funcName.startIndex, to: closeIndex) + offset.end >= funcName.distance(from: funcName.startIndex, to: openIndex) + offset.start else { return nil }
         return (funcName.index(openIndex, offsetBy: offset.start), funcName.index(closeIndex, offsetBy: offset.end))
     }
 
