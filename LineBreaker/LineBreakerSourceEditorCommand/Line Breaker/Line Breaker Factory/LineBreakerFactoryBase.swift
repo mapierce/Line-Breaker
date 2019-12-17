@@ -34,9 +34,9 @@ class LineBreakerFactoryBase: LineBreakerFactory {
         } else if codeString.range(of: Constants.dictRegEx, options: .regularExpression) != nil {
             return CollectionBreaker()
         } else if codeString.range(of: Constants.ifRegEx, options: .regularExpression) != nil {
-            return StandardIfBreaker()
+            return BooleanBreaker()
         } else if codeString.range(of: Constants.guardRegex, options: .regularExpression) != nil {
-            return StandardGuardBreaker()
+            return BooleanBreaker()
         }
         return DotSeparatorBreaker()
     }

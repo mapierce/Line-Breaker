@@ -75,10 +75,10 @@ final class LineBreakerTests: XCTestCase {
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.arrayTwo) is CollectionBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.dictOne) is CollectionBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.dictTwo) is CollectionBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardOne) is StandardGuardBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardTwo) is StandardGuardBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifOne) is StandardIfBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifTwo) is StandardIfBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardOne) is BooleanBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardTwo) is BooleanBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifOne) is BooleanBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifTwo) is BooleanBreaker)
     }
     
     func testFunctionBreaker() {
@@ -234,6 +234,36 @@ final class LineBreakerTests: XCTestCase {
         let brokenLineTwo = breaker.breakLine(Constants.arrayTwo)!
         let brokenLineThree = breaker.breakLine(Constants.dictOne)!
         let brokenLineFour = breaker.breakLine(Constants.dictTwo)!
+        XCTAssertEqual(brokenLineOne, brokenOneExpected)
+        XCTAssertEqual(brokenLineTwo, brokenTwoExpected)
+        XCTAssertEqual(brokenLineThree, brokenThreeExpected)
+        XCTAssertEqual(brokenLineFour, brokenFourExpected)
+    }
+    
+    func testBooleanBreaker() {
+        let brokenOneExpected = """
+            if (val == 1 && otherVal == 3) ||
+                (funcCall() && otherFuncCall()) {
+            """
+        let brokenTwoExpected = """
+            if self.value != nil &&
+                thisThing > 5 {
+            """
+        let brokenThreeExpected = """
+            guard self.count <= maximumCharactersAllowed &&
+                self.count > 4 ||
+                somethingElse == true else {
+            """
+        let brokenFourExpected = """
+            guard funcCall() == 5 &&
+                someVal == "thisVal" ||
+                self != nil else {
+            """
+        let breaker = BooleanBreaker()
+        let brokenLineOne = breaker.breakLine(Constants.ifOne)!
+        let brokenLineTwo = breaker.breakLine(Constants.ifTwo)!
+        let brokenLineThree = breaker.breakLine(Constants.guardOne)!
+        let brokenLineFour = breaker.breakLine(Constants.guardTwo)!
         XCTAssertEqual(brokenLineOne, brokenOneExpected)
         XCTAssertEqual(brokenLineTwo, brokenTwoExpected)
         XCTAssertEqual(brokenLineThree, brokenThreeExpected)

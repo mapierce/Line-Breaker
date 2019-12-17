@@ -47,5 +47,15 @@ extension String {
     func matchCounts(of first: Character, with second: Character) -> Bool {
         return self.filter { $0 == first }.count == self.filter { $0 == second }.count
     }
+    
+    func indicesOfString(_ searchString: String) -> [Int] {
+        var indices: [Int] = []
+        var searchStartIndex = startIndex
+        while searchStartIndex < endIndex, let index = self[searchStartIndex..<endIndex].range(of: searchString) {
+            indices.append(distance(from: startIndex, to: index.lowerBound))
+            searchStartIndex = index.upperBound
+        }
+        return indices
+    }
 
 }
