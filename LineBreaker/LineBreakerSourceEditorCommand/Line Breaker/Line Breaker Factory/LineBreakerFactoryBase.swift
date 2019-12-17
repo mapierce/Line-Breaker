@@ -12,13 +12,13 @@ class LineBreakerFactoryBase: LineBreakerFactory {
 
     private struct Constants {
 
-        static let funcRegEx = #"(func\s|init)((\s*\w*\<\w*\>)|(\s*\w*))(\()([[:ascii:]]*)(\{){1}"#
-        static let ifLetRegEx = #"^(if let|if var)"#
-        static let guardLetRegEx = #"^(guard let|guard var)"#
-        static let arrayRegEx = #"(.*)=(\s?)\[((.[^\:^\{]*)(\,+)*)\]"#
-        static let dictRegEx = #"(.*)=(\s?)\[(.*)\:.*(\,|\])"#
-        static let ifRegEx = #"(^(?=(if)))(^(?!(if var|if let)).+)"#
-        static let guardRegex = #"(^(?=(guard)))(^(?!(guard var|guard let)).+)"#
+        static let funcRegEx = #"(func\s|init)((\s*\w*\<.*\>)|(\s*\w*))(\()([[:ascii:]]*)(\{){1}"#
+        static let ifLetRegEx = #"^(\s*)(if let|if var)"#
+        static let guardLetRegEx = #"^(\s*)(guard let|guard var)"#
+        static let arrayRegEx = #"(.*)(=|return)(\s?)\[((.[^\:^\{]*)(\,+)*)\]"#
+        static let dictRegEx = #"(.*)(=|return)(\s?)\[(.*)\:.*(\,|\])"#
+        static let ifRegEx = #"(^(?=(\s*if)))(^(?!(if var|if let)).+)"#
+        static let guardRegex = #"(^(?=(\s*guard)))(^(?!(guard var|guard let)).+)"#
 
     }
 
