@@ -24,6 +24,7 @@ struct StringConstants {
     static let newLine = "\n"
     static let and = "&&"
     static let or = "||"
+    static let `return` = "return"
     static let tabSpaceCount = 4
     
 }
