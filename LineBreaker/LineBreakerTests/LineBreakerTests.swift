@@ -12,28 +12,33 @@ final class LineBreakerTests: XCTestCase {
     
     private struct Constants {
 
-        static let funcNameOne = "func fetchCities(withAdType adType: DaftAdTypeType,someTuple t: (id: Int, name: String), adCreation: Bool, completion: @escaping (QueryAreaGroup?, _ error: APIError?) -> ()) {"
-        static let funcNameTwo = "internal class func persistCustomLocations(_ customLocations: Array<CustomLocation>, url: URL? = defaultURL, completion: @escaping (_ completed: Bool) -> Void) {"
-        static let funcNameThree = "func load<T>(_ resource: Resource<T>,completion: @escaping (Result<T, APIError>) -> Void) {"
-        static let funcNameFour = "func presentInNewWindow(_ viewController: UIViewController,animated: Bool,completion: (() -> Void)?) {"
-        static let funcNameFive = "init(withBaseURL baseURL: String, withWebService webService: WebService, withUserCredential userCredential: UserCredentialProtocol) {"
+        static let funcNameOne = "    func fetchCities(withAdType adType: DaftAdTypeType,someTuple t: (id: Int, name: String), adCreation: Bool, completion: @escaping (QueryAreaGroup?, _ error: APIError?) -> ()) {"
+        static let funcNameTwo = "    internal class func persistCustomLocations(_ customLocations: Array<CustomLocation>, url: URL? = defaultURL, completion: @escaping (_ completed: Bool) -> Void) {"
+        static let funcNameThree = "    func load<T>(_ resource: Resource<T>,completion: @escaping (Result<T, APIError>) -> Void) {"
+        static let funcNameFour = "    func presentInNewWindow(_ viewController: UIViewController,animated: Bool,completion: (() -> Void)?) {"
+        static let funcNameFive = "    init(withBaseURL baseURL: String, withWebService webService: WebService, withUserCredential userCredential: UserCredentialProtocol) {"
+        static let funcNameSix = "static func makeGetRequest<T: Decodable>(request: APIRequest,withSuccess success: @escaping (T) -> Void,withFailure failure: @escaping (Error?) -> Void) {"
+        static let funcNameSeven = "static func fetchRealtimeInfo(for stopNumbers: [String], completion: @escaping ([RealtimeResponse]?) -> Void, failure: @escaping (Error?) -> Void) {"
         static let chainedFunctionOne = #"    Image("turtlerock").clipShape(Circle()).overlay(Circle().stroke(Color.white, lineWidth: 4)).shadow(radius: 10)"#
-        static let chainedFunctionTwo = "let dotIndexes = line.enumerated().compactMap { $0.element == Constants.dot ? $0.offset : nil }.filter { line[0..<$0].filter { $0 == Constants.openBracket }.count == line[0..<$0].filter { $0 == Constants.closedBracket }.count }.map { $0 - 1}"
-        static let chainedFunctionThree = "let invokedSelectors: [Selector] = self._methodInvokedForSelector.values.filter { $0.hasObservers }.map { $0.selector }"
-        static let ifLetOne = "if let errorHandler = self.errorHandler, let jsonRaw = try? JSONSerialization.jsonObject(with: data, options: []), let json = jsonRaw as? JSONDictionary, let error = errorHandler.errorFromJSONResponse(json, andRequest: resource.request, andResponse: response) {"
-        static let ifLetTwo = #"if let contractType = adDictionary["contract_type"] as? Int, adType.type == DaftAdTypeCommercial {"#
-        static let ifLetThree = #"if let rawJson = try? JSONSerialization.jsonObject(with: data, options: []), let json = rawJson as? JSONDictionary, let count = json["count"] as? Int, count == 0 {"#
-        static let guardLetOne = "guard let searchResults = searchResults, let relativeIndexAndAdUnit = relativeIndexAndAdUnit(), paginator.currentPage < 3, Int(paginator.loadedResults - paginator.firstResultInCurrentPage) > relativeIndexAndAdUnit.index  else {"
-        static let guardLetTwo = #"guard let userInfo = notification.userInfo, let id = userInfo["id"] as? Int, let type = userInfo["type"] as? String, let adType = DaftAdType(string: type), let daysLeft = userInfo["days_left"] as? Int, let index = indexOfAd(withId: id, andAdType: adType.type) else {"#
-        static let guardLetThree = "guard let indexPath = indexPath, let collectionView = getCollectionViewController([fromViewController, toViewController]), let openingFrame = getConvertedRectFoIndexPath(indexPath, collectionView: collectionView)  else {"
-        static let arrayOne = "let arr: [(Int, Int)] = [(1, 2), (3, 4), (5, 6),(7,8), (9,9),(0,0)]"
-        static let arrayTwo = #"let arr2: [String?] = ["", "Hi, there", "", nil, "one"]"#
-        static let dictOne = #"let dictOne: [String: (Int, Any)] = ["Hi": (1, 4.0), "There": (0, "hd,fsf"), "now": (2, 2), "d": (1, true)]"#
-        static let dictTwo = "let dictTwo: [Int: Int] = [1: 1, 2: 2, 3: 3, 4: 4]"
-        static let guardOne = "guard self.count <= maximumCharactersAllowed && self.count > 4 || somethingElse == true else {"
-        static let guardTwo = #"guard funcCall() == 5 && someVal == "thisVal" || self != nil else {"#
-        static let ifOne = #"if (val == 1 && otherVal == 3) || (funcCall() && otherFuncCall()) {"#
-        static let ifTwo = #"if self.value != nil && thisThing > 5 {"#
+        static let chainedFunctionTwo = "    let dotIndexes = line.enumerated().compactMap { $0.element == Constants.dot ? $0.offset : nil }.filter { line[0..<$0].filter { $0 == Constants.openBracket }.count == line[0..<$0].filter { $0 == Constants.closedBracket }.count }.map { $0 - 1}"
+        static let chainedFunctionThree = "    let invokedSelectors: [Selector] = self._methodInvokedForSelector.values.filter { $0.hasObservers }.map { $0.selector }"
+        static let ifLetOne = "    if let errorHandler = self.errorHandler, let jsonRaw = try? JSONSerialization.jsonObject(with: data, options: []), let json = jsonRaw as? JSONDictionary, let error = errorHandler.errorFromJSONResponse(json, andRequest: resource.request, andResponse: response) {"
+        static let ifLetTwo = #"    if let contractType = adDictionary["contract_type"] as? Int, adType.type == DaftAdTypeCommercial {"#
+        static let ifLetThree = #"    if let rawJson = try? JSONSerialization.jsonObject(with: data, options: []), let json = rawJson as? JSONDictionary, let count = json["count"] as? Int, count == 0 {"#
+        static let guardLetOne = "    guard let searchResults = searchResults, let relativeIndexAndAdUnit = relativeIndexAndAdUnit(), paginator.currentPage < 3, Int(paginator.loadedResults - paginator.firstResultInCurrentPage) > relativeIndexAndAdUnit.index  else {"
+        static let guardLetTwo = #"    guard let userInfo = notification.userInfo, let id = userInfo["id"] as? Int, let type = userInfo["type"] as? String, let adType = DaftAdType(string: type), let daysLeft = userInfo["days_left"] as? Int, let index = indexOfAd(withId: id, andAdType: adType.type) else {"#
+        static let guardLetThree = "    guard let indexPath = indexPath, let collectionView = getCollectionViewController([fromViewController, toViewController]), let openingFrame = getConvertedRectFoIndexPath(indexPath, collectionView: collectionView)  else {"
+        static let arrayOne = "    let arr: [(Int, Int)] = [(1, 2), (3, 4), (5, 6),(7,8), (9,9),(0,0)]"
+        static let arrayTwo = #"    let arr2: [String?] = ["", "Hi, there", "", nil, "one"]"#
+        static let arrayThree = #"let tokenList: [(String, TokenGenerator)] = [("^[^a-zA-Z0-9]", { Token(SingleCharacter(rawValue: $0)) }),("^@[a-zA-Z0-9]*", { .attribute($0) }),("^[a-zA-Z0-9]*", { Token(Keyword(rawValue: $0)) ?? .identifier($0) }),("[.]", { Token.identifier($0) })]"#
+        static let dictOne = #"    let dictOne: [String: (Int, Any)] = ["Hi": (1, 4.0), "There": (0, "hd,fsf"), "now": (2, 2), "d": (1, true)]"#
+        static let dictTwo = "    let dictTwo: [Int: Int] = [1: 1, 2: 2, 3: 3, 4: 4]"
+        static let dictThree = #"    return [ "DecreaseAccess" : .decreaseAccess ,"IncreaseAccess" : .increaseAccess,"MakeAPI" : .makeAPI,"RemoveAPI" : .removeAPI,"MakePublic": .singleLevel(.public),"MakeInternal": .singleLevel(.internal),"MakePrivate": .singleLevel(.private),"MakeFileprivate": .singleLevel(.fileprivate),"Remove": .singleLevel(.remove)]"#
+        static let guardOne = "    guard self.count <= maximumCharactersAllowed && self.count > 4 || somethingElse == true else {"
+        static let guardTwo = #"    guard funcCall() == 5 && someVal == "thisVal" || self != nil else {"#
+        static let ifOne = #"    if (val == 1 && otherVal == 3) || (funcCall() && otherFuncCall()) {"#
+        static let ifTwo = #"    if self.value != nil && thisThing > 5 {"#
+        static let ifThree = #"    if range.start.line == range.end.line && range.start.column == range.end.column {"#
 
     }
 
@@ -61,6 +66,8 @@ final class LineBreakerTests: XCTestCase {
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.funcNameThree) is FunctionDefinitionBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.funcNameFour) is FunctionDefinitionBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.funcNameFive) is FunctionDefinitionBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.funcNameSix) is FunctionDefinitionBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.funcNameSeven) is FunctionDefinitionBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.chainedFunctionOne) is DotSeparatorBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.chainedFunctionTwo) is DotSeparatorBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.chainedFunctionThree) is DotSeparatorBreaker)
@@ -73,51 +80,68 @@ final class LineBreakerTests: XCTestCase {
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardLetThree) is UnwrapBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.arrayOne) is CollectionBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.arrayTwo) is CollectionBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.arrayThree) is CollectionBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.dictOne) is CollectionBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.dictTwo) is CollectionBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.dictThree) is CollectionBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardOne) is BooleanBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardTwo) is BooleanBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifOne) is BooleanBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifTwo) is BooleanBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifThree) is BooleanBreaker)
     }
     
     func testFunctionBreaker() {
         let funcOneExpectedLine = """
-            func fetchCities(withAdType adType: DaftAdTypeType,
-                             someTuple t: (id: Int, name: String),
-                             adCreation: Bool,
-                             completion: @escaping (QueryAreaGroup?, _ error: APIError?) -> ()) {
+                func fetchCities(withAdType adType: DaftAdTypeType,
+                                 someTuple t: (id: Int, name: String),
+                                 adCreation: Bool,
+                                 completion: @escaping (QueryAreaGroup?, _ error: APIError?) -> ()) {
             """
         let funcTwoExpectedLine = """
-            internal class func persistCustomLocations(_ customLocations: Array<CustomLocation>,
-                                                       url: URL? = defaultURL,
-                                                       completion: @escaping (_ completed: Bool) -> Void) {
+                internal class func persistCustomLocations(_ customLocations: Array<CustomLocation>,
+                                                           url: URL? = defaultURL,
+                                                           completion: @escaping (_ completed: Bool) -> Void) {
             """
         let funcThreeExpectedLine = """
-            func load<T>(_ resource: Resource<T>,
-                         completion: @escaping (Result<T, APIError>) -> Void) {
+                func load<T>(_ resource: Resource<T>,
+                             completion: @escaping (Result<T, APIError>) -> Void) {
             """
         let funcFourExpectedLine = """
-            func presentInNewWindow(_ viewController: UIViewController,
-                                    animated: Bool,
-                                    completion: (() -> Void)?) {
+                func presentInNewWindow(_ viewController: UIViewController,
+                                        animated: Bool,
+                                        completion: (() -> Void)?) {
             """
         let funcFiveExpectedLine = """
-            init(withBaseURL baseURL: String,
-                 withWebService webService: WebService,
-                 withUserCredential userCredential: UserCredentialProtocol) {
+                init(withBaseURL baseURL: String,
+                     withWebService webService: WebService,
+                     withUserCredential userCredential: UserCredentialProtocol) {
+            """
+        let funcSixExpectedLine = """
+            static func makeGetRequest<T: Decodable>(request: APIRequest,
+                                                     withSuccess success: @escaping (T) -> Void,
+                                                     withFailure failure: @escaping (Error?) -> Void) {
+            """
+        let funcSevenExpectedLine = """
+            static func fetchRealtimeInfo(for stopNumbers: [String],
+                                          completion: @escaping ([RealtimeResponse]?) -> Void,
+                                          failure: @escaping (Error?) -> Void) {
             """
         let breaker = FunctionDefinitionBreaker()
-        let brokenLineOne = breaker.breakLine(Constants.funcNameOne)
-        let brokenLineTwo = breaker.breakLine(Constants.funcNameTwo)
-        let brokenLineThree = breaker.breakLine(Constants.funcNameThree)
-        let brokenLineFour = breaker.breakLine(Constants.funcNameFour)
-        let brokenLineFive = breaker.breakLine(Constants.funcNameFive)
+        let brokenLineOne = breaker.breakLine(Constants.funcNameOne)!
+        let brokenLineTwo = breaker.breakLine(Constants.funcNameTwo)!
+        let brokenLineThree = breaker.breakLine(Constants.funcNameThree)!
+        let brokenLineFour = breaker.breakLine(Constants.funcNameFour)!
+        let brokenLineFive = breaker.breakLine(Constants.funcNameFive)!
+        let brokenLineSix = breaker.breakLine(Constants.funcNameSix)!
+        let brokenLineSeven = breaker.breakLine(Constants.funcNameSeven)!
         XCTAssertEqual(brokenLineOne, funcOneExpectedLine)
         XCTAssertEqual(brokenLineTwo, funcTwoExpectedLine)
         XCTAssertEqual(brokenLineThree, funcThreeExpectedLine)
         XCTAssertEqual(brokenLineFour, funcFourExpectedLine)
         XCTAssertEqual(brokenLineFive, funcFiveExpectedLine)
+        XCTAssertEqual(brokenLineSix, funcSixExpectedLine)
+        XCTAssertEqual(brokenLineSeven, funcSevenExpectedLine)
     }
     
     func testDotBreaker() {
@@ -128,18 +152,18 @@ final class LineBreakerTests: XCTestCase {
                     .shadow(radius: 10)
             """
         let brokenTwoExpected = """
-            let dotIndexes = line
-                .enumerated()
-                .compactMap { $0.element == Constants.dot ? $0.offset : nil }
-                .filter { line[0..<$0].filter { $0 == Constants.openBracket }.count == line[0..<$0].filter { $0 == Constants.closedBracket }.count }
-                .map { $0 - 1}
+                let dotIndexes = line
+                    .enumerated()
+                    .compactMap { $0.element == Constants.dot ? $0.offset : nil }
+                    .filter { line[0..<$0].filter { $0 == Constants.openBracket }.count == line[0..<$0].filter { $0 == Constants.closedBracket }.count }
+                    .map { $0 - 1}
             """
         let brokenThreeExpected = """
-            let invokedSelectors: [Selector] = self
-                ._methodInvokedForSelector
-                .values
-                .filter { $0.hasObservers }
-                .map { $0.selector }
+                let invokedSelectors: [Selector] = self
+                    ._methodInvokedForSelector
+                    .values
+                    .filter { $0.hasObservers }
+                    .map { $0.selector }
             """
         let breaker = DotSeparatorBreaker()
         let brokenLineOne = breaker.breakLine(Constants.chainedFunctionOne)!
@@ -152,39 +176,39 @@ final class LineBreakerTests: XCTestCase {
     
     func testIfLetBreaker() {
         let brokenOneExpected = """
-            if let errorHandler = self.errorHandler,
-                let jsonRaw = try? JSONSerialization.jsonObject(with: data, options: []),
-                let json = jsonRaw as? JSONDictionary,
-                let error = errorHandler.errorFromJSONResponse(json, andRequest: resource.request, andResponse: response) {
+                if let errorHandler = self.errorHandler,
+                    let jsonRaw = try? JSONSerialization.jsonObject(with: data, options: []),
+                    let json = jsonRaw as? JSONDictionary,
+                    let error = errorHandler.errorFromJSONResponse(json, andRequest: resource.request, andResponse: response) {
             """
         let brokenTwoExpected = """
-            if let contractType = adDictionary["contract_type"] as? Int,
-                adType.type == DaftAdTypeCommercial {
+                if let contractType = adDictionary["contract_type"] as? Int,
+                    adType.type == DaftAdTypeCommercial {
             """
         let brokenThreeExpected = """
-            if let rawJson = try? JSONSerialization.jsonObject(with: data, options: []),
-                let json = rawJson as? JSONDictionary,
-                let count = json["count"] as? Int,
-                count == 0 {
+                if let rawJson = try? JSONSerialization.jsonObject(with: data, options: []),
+                    let json = rawJson as? JSONDictionary,
+                    let count = json["count"] as? Int,
+                    count == 0 {
             """
         let brokenFourExpected = """
-            guard let searchResults = searchResults,
-                let relativeIndexAndAdUnit = relativeIndexAndAdUnit(),
-                paginator.currentPage < 3,
-                Int(paginator.loadedResults - paginator.firstResultInCurrentPage) > relativeIndexAndAdUnit.index  else {
+                guard let searchResults = searchResults,
+                    let relativeIndexAndAdUnit = relativeIndexAndAdUnit(),
+                    paginator.currentPage < 3,
+                    Int(paginator.loadedResults - paginator.firstResultInCurrentPage) > relativeIndexAndAdUnit.index  else {
             """
         let brokenFiveExpected = """
-            guard let userInfo = notification.userInfo,
-                let id = userInfo["id"] as? Int,
-                let type = userInfo["type"] as? String,
-                let adType = DaftAdType(string: type),
-                let daysLeft = userInfo["days_left"] as? Int,
-                let index = indexOfAd(withId: id, andAdType: adType.type) else {
+                guard let userInfo = notification.userInfo,
+                    let id = userInfo["id"] as? Int,
+                    let type = userInfo["type"] as? String,
+                    let adType = DaftAdType(string: type),
+                    let daysLeft = userInfo["days_left"] as? Int,
+                    let index = indexOfAd(withId: id, andAdType: adType.type) else {
             """
         let brokenSixExpected = """
-            guard let indexPath = indexPath,
-                let collectionView = getCollectionViewController([fromViewController, toViewController]),
-                let openingFrame = getConvertedRectFoIndexPath(indexPath, collectionView: collectionView)  else {
+                guard let indexPath = indexPath,
+                    let collectionView = getCollectionViewController([fromViewController, toViewController]),
+                    let openingFrame = getConvertedRectFoIndexPath(indexPath, collectionView: collectionView)  else {
             """
         let breaker = UnwrapBreaker()
         let brokenLineOne = breaker.breakLine(Constants.ifLetOne)!
@@ -203,71 +227,98 @@ final class LineBreakerTests: XCTestCase {
     
     func testCollectionBreaker() {
         let brokenOneExpected = """
-            let arr: [(Int, Int)] = [(1, 2),
-                                     (3, 4),
-                                     (5, 6),
-                                     (7,8),
-                                     (9,9),
-                                     (0,0)]
+                let arr: [(Int, Int)] = [(1, 2),
+                                         (3, 4),
+                                         (5, 6),
+                                         (7,8),
+                                         (9,9),
+                                         (0,0)]
             """
         let brokenTwoExpected = """
-            let arr2: [String?] = ["",
-                                   "Hi, there",
-                                   "",
-                                   nil,
-                                   "one"]
+                let arr2: [String?] = ["",
+                                       "Hi, there",
+                                       "",
+                                       nil,
+                                       "one"]
             """
         let brokenThreeExpected = """
-            let dictOne: [String: (Int, Any)] = ["Hi": (1, 4.0),
-                                                 "There": (0, "hd,fsf"),
-                                                 "now": (2, 2),
-                                                 "d": (1, true)]
+                let dictOne: [String: (Int, Any)] = ["Hi": (1, 4.0),
+                                                     "There": (0, "hd,fsf"),
+                                                     "now": (2, 2),
+                                                     "d": (1, true)]
             """
         let brokenFourExpected = """
-            let dictTwo: [Int: Int] = [1: 1,
-                                       2: 2,
-                                       3: 3,
-                                       4: 4]
+                let dictTwo: [Int: Int] = [1: 1,
+                                           2: 2,
+                                           3: 3,
+                                           4: 4]
+            """
+        let brokenFiveExpected = """
+                return [ "DecreaseAccess" : .decreaseAccess ,
+                        "IncreaseAccess" : .increaseAccess,
+                        "MakeAPI" : .makeAPI,
+                        "RemoveAPI" : .removeAPI,
+                        "MakePublic": .singleLevel(.public),
+                        "MakeInternal": .singleLevel(.internal),
+                        "MakePrivate": .singleLevel(.private),
+                        "MakeFileprivate": .singleLevel(.fileprivate),
+                        "Remove": .singleLevel(.remove)]
+            """
+        let brokenSixExpected = """
+            let tokenList: [(String, TokenGenerator)] = [("^[^a-zA-Z0-9]", { Token(SingleCharacter(rawValue: $0)) }),
+                                                         ("^@[a-zA-Z0-9]*", { .attribute($0) }),
+                                                         ("^[a-zA-Z0-9]*", { Token(Keyword(rawValue: $0)) ?? .identifier($0) }),
+                                                         ("[.]", { Token.identifier($0) })]
             """
         let breaker = CollectionBreaker()
         let brokenLineOne = breaker.breakLine(Constants.arrayOne)!
         let brokenLineTwo = breaker.breakLine(Constants.arrayTwo)!
         let brokenLineThree = breaker.breakLine(Constants.dictOne)!
         let brokenLineFour = breaker.breakLine(Constants.dictTwo)!
+        let brokenLineFive = breaker.breakLine(Constants.dictThree)!
+        let brokenLineSix = breaker.breakLine(Constants.arrayThree)!
         XCTAssertEqual(brokenLineOne, brokenOneExpected)
         XCTAssertEqual(brokenLineTwo, brokenTwoExpected)
         XCTAssertEqual(brokenLineThree, brokenThreeExpected)
         XCTAssertEqual(brokenLineFour, brokenFourExpected)
+        XCTAssertEqual(brokenLineFive, brokenFiveExpected)
+        XCTAssertEqual(brokenLineSix, brokenSixExpected)
     }
     
     func testBooleanBreaker() {
         let brokenOneExpected = """
-            if (val == 1 && otherVal == 3) ||
-                (funcCall() && otherFuncCall()) {
+                if (val == 1 && otherVal == 3) ||
+                    (funcCall() && otherFuncCall()) {
             """
         let brokenTwoExpected = """
-            if self.value != nil &&
-                thisThing > 5 {
+                if self.value != nil &&
+                    thisThing > 5 {
             """
         let brokenThreeExpected = """
-            guard self.count <= maximumCharactersAllowed &&
-                self.count > 4 ||
-                somethingElse == true else {
+                if range.start.line == range.end.line &&
+                    range.start.column == range.end.column {
             """
         let brokenFourExpected = """
-            guard funcCall() == 5 &&
-                someVal == "thisVal" ||
-                self != nil else {
+                guard self.count <= maximumCharactersAllowed &&
+                    self.count > 4 ||
+                    somethingElse == true else {
+            """
+        let brokenFiveExpected = """
+                guard funcCall() == 5 &&
+                    someVal == "thisVal" ||
+                    self != nil else {
             """
         let breaker = BooleanBreaker()
         let brokenLineOne = breaker.breakLine(Constants.ifOne)!
         let brokenLineTwo = breaker.breakLine(Constants.ifTwo)!
-        let brokenLineThree = breaker.breakLine(Constants.guardOne)!
-        let brokenLineFour = breaker.breakLine(Constants.guardTwo)!
+        let brokenLineThree = breaker.breakLine(Constants.ifThree)!
+        let brokenLineFour = breaker.breakLine(Constants.guardOne)!
+        let brokenLineFive = breaker.breakLine(Constants.guardTwo)!
         XCTAssertEqual(brokenLineOne, brokenOneExpected)
         XCTAssertEqual(brokenLineTwo, brokenTwoExpected)
         XCTAssertEqual(brokenLineThree, brokenThreeExpected)
         XCTAssertEqual(brokenLineFour, brokenFourExpected)
+        XCTAssertEqual(brokenLineFive, brokenFiveExpected)
     }
 
 }
