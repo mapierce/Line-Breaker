@@ -10,14 +10,9 @@ import Foundation
 
 extension String {
 
-    func firstIntIndex(of element: Character) -> Int {
-        guard let firstIndex = firstIndex(of: element) else { return -1 }
+    func firstIntIndex(of element: Character) -> Int? {
+        guard let firstIndex = firstIndex(of: element) else { return nil }
         return distance(from: startIndex, to: firstIndex)
-    }
-
-    func lastIntIndex(of element: Character) -> Int {
-        guard let lastIndex = lastIndex(of: element) else { return -1 }
-        return distance(from: startIndex, to: lastIndex)
     }
 
     func split(at indexes: [Int]) -> [String] {
@@ -30,6 +25,7 @@ extension String {
     }
 
     subscript(range: Range<Int>) -> String {
+        guard 0..<count + 1 ~= range.lowerBound && 0..<count + 1 ~= range.upperBound else { return "" }
         let start = index(startIndex, offsetBy: range.startIndex)
         let end = index(startIndex, offsetBy: range.startIndex + range.count)
         return String(self[start..<end])
