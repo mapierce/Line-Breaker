@@ -10,6 +10,6 @@ import Foundation
 
 protocol LineBreakerProtocol {
 
-    func breakLine(_ line: String) -> String?
+    func breakLine(_ line: String, tabWidth spacesPerTab: Int) -> String?
     
 }

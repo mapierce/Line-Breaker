@@ -12,13 +12,13 @@ struct BooleanBreaker: LineBreakerProtocol {
 
     // MARK: - LineBreaker methods
 
-    func breakLine(_ line: String) -> String? {
+    func breakLine(_ line: String, tabWidth spacesPerTab: Int) -> String? {
         let indexes = (line.indicesOfString(StringConstants.and) + line.indicesOfString(StringConstants.or))
             .filter { line[0..<$0].matchCounts(of: StringConstants.openBracket, with: StringConstants.closedBracket) }.map { $0 + 1 }
         var splitString = line.split(at: indexes)
         guard splitString.count > 1 else { return nil }
         splitString = [splitString[0]] + splitString[1...].map { $0.trimmingCharacters(in: .whitespaces) }
-        let spaceString = String(repeating: " ", count: StringConstants.tabSpaceCount + line.getLeadingSpaceCount())
+        let spaceString = String(repeating: " ", count: spacesPerTab + line.getLeadingSpaceCount())
         return splitString[0] +
             StringConstants.newLine +
             splitString[1..<splitString.count - 1].map { spaceString + $0 + StringConstants.newLine }.joined() +

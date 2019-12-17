@@ -31,7 +31,7 @@ class LineBreakerCommand: NSObject, XCSourceEditorCommand {
                 return
         }
         let lineBreaker = lineBreakerFactory.getLineBreaker(from: line)
-        guard let brokenLine = lineBreaker.breakLine(line) else {
+        guard let brokenLine = lineBreaker.breakLine(line, tabWidth: invocation.buffer.tabWidth) else {
             completionHandler(InvalidLinesToBreakError())
             return
         }

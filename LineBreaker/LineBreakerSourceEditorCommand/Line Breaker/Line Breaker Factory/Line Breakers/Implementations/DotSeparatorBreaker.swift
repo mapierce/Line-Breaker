@@ -12,7 +12,7 @@ struct DotSeparatorBreaker: LineBreakerProtocol {
 
     // MARK: - LineBreaker methods
     
-    func breakLine(_ line: String) -> String? {
+    func breakLine(_ line: String, tabWidth spacesPerTab: Int) -> String? {
         let dotIndexes = line
             .enumerated()
             .compactMap { $0.element == StringConstants.dot ? $0.offset : nil }
@@ -21,7 +21,7 @@ struct DotSeparatorBreaker: LineBreakerProtocol {
             .map { $0 - 1 }
         let splitString = line.split(at: dotIndexes)
         guard splitString.count > 1 else { return nil }
-        let spaceString = String(repeating: " ", count: StringConstants.tabSpaceCount + line.getLeadingSpaceCount())
+        let spaceString = String(repeating: " ", count: spacesPerTab + line.getLeadingSpaceCount())
         return splitString[0] +
             StringConstants.newLine +
             splitString[1..<splitString.count - 1].map { spaceString + $0 + StringConstants.newLine }.joined() +

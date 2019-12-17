@@ -128,13 +128,13 @@ final class LineBreakerTests: XCTestCase {
                                           failure: @escaping (Error?) -> Void) {
             """
         let breaker = FunctionDefinitionBreaker()
-        let brokenLineOne = breaker.breakLine(Constants.funcNameOne)!
-        let brokenLineTwo = breaker.breakLine(Constants.funcNameTwo)!
-        let brokenLineThree = breaker.breakLine(Constants.funcNameThree)!
-        let brokenLineFour = breaker.breakLine(Constants.funcNameFour)!
-        let brokenLineFive = breaker.breakLine(Constants.funcNameFive)!
-        let brokenLineSix = breaker.breakLine(Constants.funcNameSix)!
-        let brokenLineSeven = breaker.breakLine(Constants.funcNameSeven)!
+        let brokenLineOne = breaker.breakLine(Constants.funcNameOne, tabWidth: 4)!
+        let brokenLineTwo = breaker.breakLine(Constants.funcNameTwo, tabWidth: 4)!
+        let brokenLineThree = breaker.breakLine(Constants.funcNameThree, tabWidth: 4)!
+        let brokenLineFour = breaker.breakLine(Constants.funcNameFour, tabWidth: 4)!
+        let brokenLineFive = breaker.breakLine(Constants.funcNameFive, tabWidth: 4)!
+        let brokenLineSix = breaker.breakLine(Constants.funcNameSix, tabWidth: 4)!
+        let brokenLineSeven = breaker.breakLine(Constants.funcNameSeven, tabWidth: 4)!
         XCTAssertEqual(brokenLineOne, funcOneExpectedLine)
         XCTAssertEqual(brokenLineTwo, funcTwoExpectedLine)
         XCTAssertEqual(brokenLineThree, funcThreeExpectedLine)
@@ -166,9 +166,9 @@ final class LineBreakerTests: XCTestCase {
                     .map { $0.selector }
             """
         let breaker = DotSeparatorBreaker()
-        let brokenLineOne = breaker.breakLine(Constants.chainedFunctionOne)!
-        let brokenLineTwo = breaker.breakLine(Constants.chainedFunctionTwo)!
-        let brokenLineThree = breaker.breakLine(Constants.chainedFunctionThree)!
+        let brokenLineOne = breaker.breakLine(Constants.chainedFunctionOne, tabWidth: 4)!
+        let brokenLineTwo = breaker.breakLine(Constants.chainedFunctionTwo, tabWidth: 4)!
+        let brokenLineThree = breaker.breakLine(Constants.chainedFunctionThree, tabWidth: 4)!
         XCTAssertEqual(brokenLineOne, brokenOneExpected)
         XCTAssertEqual(brokenLineTwo, brokenTwoExpected)
         XCTAssertEqual(brokenLineThree, brokenThreeExpected)
@@ -211,12 +211,12 @@ final class LineBreakerTests: XCTestCase {
                     let openingFrame = getConvertedRectFoIndexPath(indexPath, collectionView: collectionView)  else {
             """
         let breaker = UnwrapBreaker()
-        let brokenLineOne = breaker.breakLine(Constants.ifLetOne)!
-        let brokenLineTwo = breaker.breakLine(Constants.ifLetTwo)!
-        let brokenLineThree = breaker.breakLine(Constants.ifLetThree)!
-        let brokenLineFour = breaker.breakLine(Constants.guardLetOne)!
-        let brokenLineFive = breaker.breakLine(Constants.guardLetTwo)!
-        let brokenLineSix = breaker.breakLine(Constants.guardLetThree)!
+        let brokenLineOne = breaker.breakLine(Constants.ifLetOne, tabWidth: 4)!
+        let brokenLineTwo = breaker.breakLine(Constants.ifLetTwo, tabWidth: 4)!
+        let brokenLineThree = breaker.breakLine(Constants.ifLetThree, tabWidth: 4)!
+        let brokenLineFour = breaker.breakLine(Constants.guardLetOne, tabWidth: 4)!
+        let brokenLineFive = breaker.breakLine(Constants.guardLetTwo, tabWidth: 4)!
+        let brokenLineSix = breaker.breakLine(Constants.guardLetThree, tabWidth: 4)!
         XCTAssertEqual(brokenLineOne, brokenOneExpected)
         XCTAssertEqual(brokenLineTwo, brokenTwoExpected)
         XCTAssertEqual(brokenLineThree, brokenThreeExpected)
@@ -271,12 +271,12 @@ final class LineBreakerTests: XCTestCase {
                                                          ("[.]", { Token.identifier($0) })]
             """
         let breaker = CollectionBreaker()
-        let brokenLineOne = breaker.breakLine(Constants.arrayOne)!
-        let brokenLineTwo = breaker.breakLine(Constants.arrayTwo)!
-        let brokenLineThree = breaker.breakLine(Constants.dictOne)!
-        let brokenLineFour = breaker.breakLine(Constants.dictTwo)!
-        let brokenLineFive = breaker.breakLine(Constants.dictThree)!
-        let brokenLineSix = breaker.breakLine(Constants.arrayThree)!
+        let brokenLineOne = breaker.breakLine(Constants.arrayOne, tabWidth: 4)!
+        let brokenLineTwo = breaker.breakLine(Constants.arrayTwo, tabWidth: 4)!
+        let brokenLineThree = breaker.breakLine(Constants.dictOne, tabWidth: 4)!
+        let brokenLineFour = breaker.breakLine(Constants.dictTwo, tabWidth: 4)!
+        let brokenLineFive = breaker.breakLine(Constants.dictThree, tabWidth: 4)!
+        let brokenLineSix = breaker.breakLine(Constants.arrayThree, tabWidth: 4)!
         XCTAssertEqual(brokenLineOne, brokenOneExpected)
         XCTAssertEqual(brokenLineTwo, brokenTwoExpected)
         XCTAssertEqual(brokenLineThree, brokenThreeExpected)
@@ -309,11 +309,11 @@ final class LineBreakerTests: XCTestCase {
                     self != nil else {
             """
         let breaker = BooleanBreaker()
-        let brokenLineOne = breaker.breakLine(Constants.ifOne)!
-        let brokenLineTwo = breaker.breakLine(Constants.ifTwo)!
-        let brokenLineThree = breaker.breakLine(Constants.ifThree)!
-        let brokenLineFour = breaker.breakLine(Constants.guardOne)!
-        let brokenLineFive = breaker.breakLine(Constants.guardTwo)!
+        let brokenLineOne = breaker.breakLine(Constants.ifOne, tabWidth: 4)!
+        let brokenLineTwo = breaker.breakLine(Constants.ifTwo, tabWidth: 4)!
+        let brokenLineThree = breaker.breakLine(Constants.ifThree, tabWidth: 4)!
+        let brokenLineFour = breaker.breakLine(Constants.guardOne, tabWidth: 4)!
+        let brokenLineFive = breaker.breakLine(Constants.guardTwo, tabWidth: 4)!
         XCTAssertEqual(brokenLineOne, brokenOneExpected)
         XCTAssertEqual(brokenLineTwo, brokenTwoExpected)
         XCTAssertEqual(brokenLineThree, brokenThreeExpected)

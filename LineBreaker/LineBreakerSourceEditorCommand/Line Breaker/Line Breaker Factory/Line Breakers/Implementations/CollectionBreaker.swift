@@ -12,7 +12,7 @@ struct CollectionBreaker: LineBreakerProtocol {
 
     // MARK: - LineBreaker methods
 
-    func breakLine(_ line: String) -> String? {
+    func breakLine(_ line: String, tabWidth spacesPerTab: Int) -> String? {
         guard let beginningIndex = getStartIndex(from: line) else { return nil }
         let arrayBody = line[beginningIndex..<line.count]
         let commaIndexes = arrayBody.enumerated()

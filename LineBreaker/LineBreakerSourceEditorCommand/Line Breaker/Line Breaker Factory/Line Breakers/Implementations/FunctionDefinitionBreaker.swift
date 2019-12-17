@@ -12,7 +12,7 @@ struct FunctionDefinitionBreaker: LineBreakerProtocol {
 
     // MARK: - LineBreaker methods
 
-    func breakLine(_ line: String) -> String? {
+    func breakLine(_ line: String, tabWidth spacesPerTab: Int) -> String? {
         guard let bracketIndexes = getBracketIndexes(from: line),
             let openBracket = line.firstIntIndex(of: StringConstants.openBracket) else { return nil }
         var innerFunction = String(line[bracketIndexes.open...bracketIndexes.close])
