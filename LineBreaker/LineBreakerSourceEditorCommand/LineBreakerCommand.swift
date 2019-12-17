@@ -14,14 +14,16 @@ class LineBreakerCommand: NSObject, XCSourceEditorCommand {
     let lineBreakerFactory: LineBreakerFactory
     
     // MARK: - Initialization
-
-    init(lineBreakerFactory: LineBreakerFactory = LineBreakerFactoryBase()) {
-        self.lineBreakerFactory = lineBreakerFactory
+    
+    override init() {
+        self.lineBreakerFactory = LineBreakerFactoryBase()
+        
+        super.init()
     }
     
     // MARK: - XCSourceEditorCommand methods
     
-    func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
+    func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void) -> Void {
         guard let selection = invocation.buffer.selections.firstObject as? XCSourceTextRange,
             selection.start.line == selection.end.line,
             let line = invocation.buffer.lines[selection.start.line] as? String else {
