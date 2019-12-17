@@ -25,17 +25,14 @@ class LineBreakerFactoryBase: LineBreakerFactory {
     func getLineBreaker(from codeString: String) -> LineBreakerProtocol {
         if codeString.range(of: Constants.funcRegEx, options: .regularExpression) != nil {
             return FunctionDefinitionBreaker()
-        } else if codeString.range(of: Constants.ifLetRegEx, options: .regularExpression) != nil {
+        } else if codeString.range(of: Constants.ifLetRegEx, options: .regularExpression) != nil ||
+            codeString.range(of: Constants.guardLetRegEx, options: .regularExpression) != nil {
             return UnwrapBreaker()
-        } else if codeString.range(of: Constants.guardLetRegEx, options: .regularExpression) != nil {
-            return UnwrapBreaker()
-        } else if codeString.range(of: Constants.arrayRegEx, options: .regularExpression) != nil {
+        } else if codeString.range(of: Constants.arrayRegEx, options: .regularExpression) != nil ||
+            codeString.range(of: Constants.dictRegEx, options: .regularExpression) != nil {
             return CollectionBreaker()
-        } else if codeString.range(of: Constants.dictRegEx, options: .regularExpression) != nil {
-            return CollectionBreaker()
-        } else if codeString.range(of: Constants.ifRegEx, options: .regularExpression) != nil {
-            return BooleanBreaker()
-        } else if codeString.range(of: Constants.guardRegex, options: .regularExpression) != nil {
+        } else if codeString.range(of: Constants.ifRegEx, options: .regularExpression) != nil ||
+            codeString.range(of: Constants.guardRegex, options: .regularExpression) != nil {
             return BooleanBreaker()
         }
         return DotSeparatorBreaker()

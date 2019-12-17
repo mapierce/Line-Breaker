@@ -9,34 +9,21 @@
 import Foundation
 
 struct CollectionBreaker: LineBreakerProtocol {
-    
-    private struct Constants {
-        
-        static let equals: Character = "="
-        static let openBracket: Character = "("
-        static let closedBracket: Character = ")"
-        static let openSquareBracket: Character = "["
-        static let closedSquareBracket: Character = "]"
-        static let comma: Character = ","
-        static let quote: Character = "\""
-        static let newLine = "\n"
-        
-    }
 
     // MARK: - LineBreaker methods
 
     func breakLine(_ line: String) -> String? {
-        let equalsIndex = line.firstIntIndex(of: Constants.equals)
+        let equalsIndex = line.firstIntIndex(of: StringConstants.equals)
         let arrayBody = line[equalsIndex..<line.count]
         let commaIndexes = arrayBody.enumerated()
-            .compactMap { $0.element == Constants.comma ? $0.offset : nil }
+            .compactMap { $0.element == StringConstants.comma ? $0.offset : nil }
             .filter { topLevelCommas(in: arrayBody[0..<$0]) }
             .map { $0 + equalsIndex }
-        let openSquareIndex = arrayBody.firstIntIndex(of: Constants.openSquareBracket) + 1
+        let openSquareIndex = arrayBody.firstIntIndex(of: StringConstants.openSquareBracket) + 1
         let splitString = line.split(at: commaIndexes)
         let spaceString = String(repeating: " ", count: openSquareIndex + equalsIndex)
         return splitString[0] +
-            Constants.newLine +
+            StringConstants.newLine +
             splitString[1..<splitString.count - 1].map { formatString($0, with: spaceString) }.joined() +
             spaceString +
             splitString[splitString.count - 1].trimmingCharacters(in: .whitespaces)
@@ -45,12 +32,12 @@ struct CollectionBreaker: LineBreakerProtocol {
     // MARK: - Private functions
     
     private func topLevelCommas(in string: String) -> Bool {
-        return string.matchCounts(of: Constants.openBracket, with: Constants.closedBracket) &&
-            string.filter { $0 == Constants.quote }.count.isMultiple(of: 2)
+        return string.matchCounts(of: StringConstants.openBracket, with: StringConstants.closedBracket) &&
+            string.filter { $0 == StringConstants.quote }.count.isMultiple(of: 2)
     }
     
     private func formatString(_ string: String, with spacing: String) -> String {
-        return spacing + string.trimmingCharacters(in: .whitespaces) + Constants.newLine
+        return spacing + string.trimmingCharacters(in: .whitespaces) + StringConstants.newLine
     }
     
 }
