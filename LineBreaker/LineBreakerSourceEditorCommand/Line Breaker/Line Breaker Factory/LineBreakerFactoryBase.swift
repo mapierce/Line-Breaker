@@ -30,9 +30,9 @@ class LineBreakerFactoryBase: LineBreakerFactory {
         } else if codeString.range(of: Constants.guardLetRegEx, options: .regularExpression) != nil {
             return UnwrapBreaker()
         } else if codeString.range(of: Constants.arrayRegEx, options: .regularExpression) != nil {
-            return ArrayBreaker()
+            return CollectionBreaker()
         } else if codeString.range(of: Constants.dictRegEx, options: .regularExpression) != nil {
-            return DictionaryBreaker()
+            return CollectionBreaker()
         } else if codeString.range(of: Constants.ifRegEx, options: .regularExpression) != nil {
             return StandardIfBreaker()
         } else if codeString.range(of: Constants.guardRegex, options: .regularExpression) != nil {

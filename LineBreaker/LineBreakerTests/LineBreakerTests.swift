@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import LineBreaker
 
 final class LineBreakerTests: XCTestCase {
     
@@ -72,10 +71,10 @@ final class LineBreakerTests: XCTestCase {
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardLetOne) is UnwrapBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardLetTwo) is UnwrapBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardLetThree) is UnwrapBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.arrayOne) is ArrayBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.arrayTwo) is ArrayBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.dictOne) is DictionaryBreaker)
-        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.dictTwo) is DictionaryBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.arrayOne) is CollectionBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.arrayTwo) is CollectionBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.dictOne) is CollectionBreaker)
+        XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.dictTwo) is CollectionBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardOne) is StandardGuardBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.guardTwo) is StandardGuardBreaker)
         XCTAssertTrue(lineBreakerFactory.getLineBreaker(from: Constants.ifOne) is StandardIfBreaker)
@@ -200,6 +199,45 @@ final class LineBreakerTests: XCTestCase {
         XCTAssertEqual(brokenLineFour, brokenFourExpected)
         XCTAssertEqual(brokenLineFive, brokenFiveExpected)
         XCTAssertEqual(brokenLineSix, brokenSixExpected)
+    }
+    
+    func testCollectionBreaker() {
+        let brokenOneExpected = """
+            let arr: [(Int, Int)] = [(1, 2),
+                                     (3, 4),
+                                     (5, 6),
+                                     (7,8),
+                                     (9,9),
+                                     (0,0)]
+            """
+        let brokenTwoExpected = """
+            let arr2: [String?] = ["",
+                                   "Hi, there",
+                                   "",
+                                   nil,
+                                   "one"]
+            """
+        let brokenThreeExpected = """
+            let dictOne: [String: (Int, Any)] = ["Hi": (1, 4.0),
+                                                 "There": (0, "hd,fsf"),
+                                                 "now": (2, 2),
+                                                 "d": (1, true)]
+            """
+        let brokenFourExpected = """
+            let dictTwo: [Int: Int] = [1: 1,
+                                       2: 2,
+                                       3: 3,
+                                       4: 4]
+            """
+        let breaker = CollectionBreaker()
+        let brokenLineOne = breaker.breakLine(Constants.arrayOne)!
+        let brokenLineTwo = breaker.breakLine(Constants.arrayTwo)!
+        let brokenLineThree = breaker.breakLine(Constants.dictOne)!
+        let brokenLineFour = breaker.breakLine(Constants.dictTwo)!
+        XCTAssertEqual(brokenLineOne, brokenOneExpected)
+        XCTAssertEqual(brokenLineTwo, brokenTwoExpected)
+        XCTAssertEqual(brokenLineThree, brokenThreeExpected)
+        XCTAssertEqual(brokenLineFour, brokenFourExpected)
     }
 
 }
