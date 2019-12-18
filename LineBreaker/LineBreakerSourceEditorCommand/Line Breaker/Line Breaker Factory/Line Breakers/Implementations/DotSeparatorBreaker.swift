@@ -13,11 +13,13 @@ struct DotSeparatorBreaker: LineBreakerProtocol {
     // MARK: - LineBreaker methods
     
     func breakLine(_ line: String, tabWidth spacesPerTab: Int) -> String? {
-        let dotIndexes = line
+        let startIndex = line.firstIntIndex(of: StringConstants.equals) ?? 0
+        let dotIndexes = line[startIndex..<line.count]
             .enumerated()
             .compactMap { $0.element == StringConstants.dot ? $0.offset : nil }
-            .filter { line[0..<$0].matchCounts(of: StringConstants.openBracket, with: StringConstants.closedBracket) &&
-                line[0..<$0].matchCounts(of: StringConstants.openCurly, with: StringConstants.closedCurly) }
+            .map { $0 + startIndex }
+            .filter { line[startIndex..<$0].matchCounts(of: StringConstants.openBracket, with: StringConstants.closedBracket) &&
+                line[startIndex..<$0].matchCounts(of: StringConstants.openCurly, with: StringConstants.closedCurly) }
             .map { $0 - 1 }
         let splitString = line.split(at: dotIndexes)
         guard splitString.count > 1 else { return nil }
