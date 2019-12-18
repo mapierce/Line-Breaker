@@ -687,6 +687,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = lookwhatmattmade.LineBreaker.LineBreakerSourceEditorCommand;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -709,6 +710,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = lookwhatmattmade.LineBreaker.LineBreakerSourceEditorCommand;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
