@@ -25,17 +25,29 @@ class LineBreakerCommand: NSObject, XCSourceEditorCommand {
     
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void) -> Void {
         guard let selection = invocation.buffer.selections.firstObject as? XCSourceTextRange,
-            selection.start.line == selection.end.line,
-            let line = invocation.buffer.lines[selection.start.line] as? String else {
-                completionHandler(MultipleLinesSelectedError())
+            let lines = invocation.buffer.lines as? [String] else {
+                completionHandler(InvalidSelectionError())
                 return
         }
-        let lineBreaker = lineBreakerFactory.getLineBreaker(from: line)
+        let start = selection.start.line
+        let end = selection.end.line
+        let line: String
+        if start == end {
+            line = lines[start]
+        } else {
+            assert(lines.count > 1)
+            line = lines[start].trimmingCharacters(in: .newlines) +
+                lines[start + 1...end].map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.joined()
+        }
+        guard let lineBreaker = lineBreakerFactory.getLineBreaker(from: line) else {
+            completionHandler(InvalidSelectionError())
+            return
+        }
         guard let brokenLine = lineBreaker.breakLine(line, tabWidth: invocation.buffer.tabWidth) else {
             completionHandler(InvalidLinesToBreakError())
             return
         }
-        invocation.buffer.lines.removeObject(at: selection.start.line)
+        invocation.buffer.lines.removeObjects(in: NSRange(location: start, length: end - start + 1))
         invocation.buffer.lines.insert(brokenLine, at: selection.start.line)
         completionHandler(nil)
     }
