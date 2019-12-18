@@ -10,6 +10,6 @@ import Foundation
 
 protocol LineBreakerFactory {
 
-    func getLineBreaker(from codeString: String) -> LineBreakerProtocol
+    func getLineBreaker(from codeString: String) -> LineBreakerProtocol?
     
 }

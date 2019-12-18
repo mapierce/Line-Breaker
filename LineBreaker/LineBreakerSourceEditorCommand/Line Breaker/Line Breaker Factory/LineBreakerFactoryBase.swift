@@ -19,10 +19,11 @@ class LineBreakerFactoryBase: LineBreakerFactory {
         static let dictRegEx = #"(.*)(=|return)(\s?)\[(.*)\:.*(\,|\])"#
         static let ifRegEx = #"(^(?=(\s*if)))(^(?!(if var|if let)).+)"#
         static let guardRegex = #"(^(?=(\s*guard)))(^(?!(guard var|guard let)).+)"#
+        static let dotRegex = #"(.*?\.){2,}"#
 
     }
 
-    func getLineBreaker(from codeString: String) -> LineBreakerProtocol {
+    func getLineBreaker(from codeString: String) -> LineBreakerProtocol? {
         if codeString.range(of: Constants.funcRegEx, options: .regularExpression) != nil {
             return FunctionDefinitionBreaker()
         } else if codeString.range(of: Constants.ifLetRegEx, options: .regularExpression) != nil ||
@@ -34,8 +35,10 @@ class LineBreakerFactoryBase: LineBreakerFactory {
         } else if codeString.range(of: Constants.ifRegEx, options: .regularExpression) != nil ||
             codeString.range(of: Constants.guardRegex, options: .regularExpression) != nil {
             return BooleanBreaker()
+        } else if codeString.range(of: Constants.dotRegex, options: .regularExpression) != nil {
+            return DotSeparatorBreaker()
         }
-        return DotSeparatorBreaker()
+        return nil
     }
 
 }
