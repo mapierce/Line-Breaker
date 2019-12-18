@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		340F0EB423A905D300181582 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340F0EB323A905D300181582 /* StringConstants.swift */; };
 		340F0EB523A906FB00181582 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340F0EB323A905D300181582 /* StringConstants.swift */; };
+		34C23FE723AA436000B7A0EB /* InvalidSelectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C23FE623AA436000B7A0EB /* InvalidSelectionError.swift */; };
 		34EB143623A7C7A5001E76B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB143523A7C7A5001E76B2 /* AppDelegate.swift */; };
 		34EB143823A7C7A5001E76B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB143723A7C7A5001E76B2 /* ViewController.swift */; };
 		34EB143A23A7C7A6001E76B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34EB143923A7C7A6001E76B2 /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		340F0EB323A905D300181582 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
+		34C23FE623AA436000B7A0EB /* InvalidSelectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvalidSelectionError.swift; sourceTree = "<group>"; };
 		34EB143223A7C7A5001E76B2 /* LineBreaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LineBreaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34EB143523A7C7A5001E76B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34EB143723A7C7A5001E76B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				34EB148523A7C9FE001E76B2 /* MultipleLinesSelectedError.swift */,
 				34EB148723A7CA0D001E76B2 /* InvalidLinesToBreakError.swift */,
+				34C23FE623AA436000B7A0EB /* InvalidSelectionError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				34EB147723A7C99D001E76B2 /* DotSeparatorBreaker.swift in Sources */,
 				34EB146D23A7C955001E76B2 /* LineBreakerFactory.swift in Sources */,
 				34EB148823A7CA0D001E76B2 /* InvalidLinesToBreakError.swift in Sources */,
+				34C23FE723AA436000B7A0EB /* InvalidSelectionError.swift in Sources */,
 				34EB146F23A7C95F001E76B2 /* LineBreakerFactoryBase.swift in Sources */,
 				34EB147D23A7C9BA001E76B2 /* CollectionBreaker.swift in Sources */,
 				34EB147923A7C9A8001E76B2 /* UnwrapBreaker.swift in Sources */,
