@@ -10,18 +10,9 @@ import Cocoa
 
 class ViewController: NSViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBAction func openSettingsTapped(_ sender: Any) {
+        let url = URL(fileURLWithPath: "/System/Library/PreferencePanes/Extensions.prefPane")
+        NSWorkspace.shared.open(url)
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
-
+    
 }
-
