@@ -586,9 +586,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LineBreaker/LineBreaker.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = U7NWDQJYQA;
+				DEVELOPMENT_TEAM = KRRKH79V7N;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = LineBreaker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -607,9 +608,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LineBreaker/LineBreaker.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = U7NWDQJYQA;
+				DEVELOPMENT_TEAM = KRRKH79V7N;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = LineBreaker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -627,9 +629,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = U7NWDQJYQA;
+				DEVELOPMENT_TEAM = KRRKH79V7N;
 				INFOPLIST_FILE = LineBreakerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -649,9 +652,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = U7NWDQJYQA;
+				DEVELOPMENT_TEAM = KRRKH79V7N;
 				INFOPLIST_FILE = LineBreakerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -670,9 +674,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "LineBreakerSourceEditorCommand/Supporting Files/LineBreakerSourceEditorCommand.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = U7NWDQJYQA;
+				DEVELOPMENT_TEAM = KRRKH79V7N;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "LineBreakerSourceEditorCommand/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -691,9 +696,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "LineBreakerSourceEditorCommand/Supporting Files/LineBreakerSourceEditorCommand.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = U7NWDQJYQA;
+				DEVELOPMENT_TEAM = KRRKH79V7N;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "LineBreakerSourceEditorCommand/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
