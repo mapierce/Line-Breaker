@@ -84,9 +84,22 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="LineBreaker Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="ReadMe" id="6Ru-3u-OLY">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
+                                                <action selector="readmeTapped:" target="Voe-Tx-rLC" id="Gk9-DF-wtO"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Submit an issue" id="wbz-5S-eol">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="submitIssueTapped:" target="Voe-Tx-rLC" id="kUD-VU-2no"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Share feedback" id="et0-Us-yYt">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="shareFeedbackTapped:" target="Voe-Tx-rLC" id="qEy-ex-KVD"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -131,11 +144,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="LineBreaker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="170"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="194"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OIr-Eo-Zg6">
-                                <rect key="frame" x="18" y="121" width="444" height="29"/>
+                                <rect key="frame" x="18" y="145" width="444" height="29"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Installation Steps" id="Uy4-pl-sQh">
                                     <font key="font" metaFont="systemSemibold" size="25"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -143,7 +156,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Zs-JJ-hAT">
-                                <rect key="frame" x="18" y="97" width="444" height="16"/>
+                                <rect key="frame" x="18" y="121" width="444" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="1) Open the &quot;Extensions&quot; pane of System Preferences" id="LeF-6R-l9q">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -151,7 +164,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q4U-c9-wAx">
-                                <rect key="frame" x="18" y="44" width="444" height="16"/>
+                                <rect key="frame" x="18" y="68" width="444" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="2) Scroll down to &quot;Xcode Source Editor&quot;" id="GfF-YJ-UwV">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -159,7 +172,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LIg-uz-YRz">
-                                <rect key="frame" x="18" y="20" width="444" height="16"/>
+                                <rect key="frame" x="18" y="44" width="444" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="3) Enable &quot;Line Breaker&quot;" id="Kkz-b9-Qu1">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -167,7 +180,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VbK-JG-4bs">
-                                <rect key="frame" x="141" y="61" width="198" height="32"/>
+                                <rect key="frame" x="141" y="85" width="198" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open System Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fkd-fb-bAk">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -176,10 +189,20 @@
                                     </connections>
                                 </buttonCell>
                             </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AEY-o1-RIn">
+                                <rect key="frame" x="18" y="20" width="444" height="16"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" title="4) Close this app" id="laB-hU-lS9">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="VbK-JG-4bs" firstAttribute="top" secondItem="2Zs-JJ-hAT" secondAttribute="bottom" constant="8" id="0xR-tM-LF4"/>
+                            <constraint firstItem="AEY-o1-RIn" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="2Jc-Pr-FYa"/>
                             <constraint firstItem="q4U-c9-wAx" firstAttribute="top" secondItem="VbK-JG-4bs" secondAttribute="bottom" constant="8" id="4Ft-47-tv0"/>
+                            <constraint firstItem="AEY-o1-RIn" firstAttribute="top" secondItem="LIg-uz-YRz" secondAttribute="bottom" constant="8" id="5Uv-S1-6u5"/>
                             <constraint firstItem="LIg-uz-YRz" firstAttribute="top" secondItem="q4U-c9-wAx" secondAttribute="bottom" constant="8" id="6jh-9o-ags"/>
                             <constraint firstItem="OIr-Eo-Zg6" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="AEX-Cz-IRG"/>
                             <constraint firstItem="VbK-JG-4bs" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="AH4-cG-gIc"/>
@@ -194,6 +217,7 @@
                             <constraint firstAttribute="trailing" secondItem="OIr-Eo-Zg6" secondAttribute="trailing" constant="20" id="hVn-IV-nHF"/>
                             <constraint firstAttribute="trailing" secondItem="2Zs-JJ-hAT" secondAttribute="trailing" constant="20" id="lvm-hD-HZF"/>
                             <constraint firstAttribute="trailing" secondItem="LIg-uz-YRz" secondAttribute="trailing" constant="20" id="nv6-hd-rdE"/>
+                            <constraint firstAttribute="trailing" secondItem="AEY-o1-RIn" secondAttribute="trailing" constant="20" id="zwG-PH-IeR"/>
                         </constraints>
                     </view>
                     <connections>
@@ -202,7 +226,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="605"/>
+            <point key="canvasLocation" x="75" y="617"/>
         </scene>
     </scenes>
 </document>
