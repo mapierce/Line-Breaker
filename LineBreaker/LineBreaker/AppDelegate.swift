@@ -11,16 +11,20 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
-
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+    @IBAction func readmeTapped(_ sender: Any) {
+        let url = URL(string: "https://github.com/mapierce/Line-Breaker/blob/master/README.md")!
+        NSWorkspace.shared.open(url)
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+    
+    @IBAction func submitIssueTapped(_ sender: Any) {
+        let url = URL(string: "https://github.com/mapierce/Line-Breaker/issues/new")!
+        NSWorkspace.shared.open(url)
     }
-
-
+    
+    @IBAction func shareFeedbackTapped(_ sender: Any) {
+        let url = URL(string: "https://twitter.com/PierceMatthew")!
+        NSWorkspace.shared.open(url)
+    }
+    
 }
 
