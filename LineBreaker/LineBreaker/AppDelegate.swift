@@ -10,6 +10,14 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    
+    // MARK: - Lifecycle
+    
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
+    
+    // MARK: - Menu actions
 
     @IBAction func readmeTapped(_ sender: Any) {
         let url = URL(string: "https://github.com/mapierce/Line-Breaker/blob/master/README.md")!
